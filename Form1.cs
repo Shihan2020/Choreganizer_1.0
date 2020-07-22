@@ -32,6 +32,8 @@ namespace Choreganizer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'choreganizer_ARDataSet.users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter.Fill(this.choreganizer_ARDataSet.users);
             // TODO: This line of code loads data into the 'choreganizer_ARDataSet.chores' table. You can move, or remove it, as needed.
             this.choresTableAdapter.Fill(this.choreganizer_ARDataSet.chores);
 

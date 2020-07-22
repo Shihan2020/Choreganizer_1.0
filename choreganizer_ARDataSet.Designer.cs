@@ -1093,9 +1093,11 @@ namespace Choreganizer {
             
             private global::System.Data.DataColumn columnuser_id;
             
-            private global::System.Data.DataColumn columndate_completed;
+            private global::System.Data.DataColumn columnchore_date;
             
             private global::System.Data.DataColumn columnnotes;
+            
+            private global::System.Data.DataColumn columncompleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1156,9 +1158,9 @@ namespace Choreganizer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn date_completedColumn {
+            public global::System.Data.DataColumn chore_dateColumn {
                 get {
-                    return this.columndate_completed;
+                    return this.columnchore_date;
                 }
             }
             
@@ -1167,6 +1169,14 @@ namespace Choreganizer {
             public global::System.Data.DataColumn notesColumn {
                 get {
                     return this.columnnotes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn completedColumn {
+                get {
+                    return this.columncompleted;
                 }
             }
             
@@ -1207,14 +1217,15 @@ namespace Choreganizer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public historyRow AddhistoryRow(int chore_id, int user_id, System.DateTime date_completed, string notes) {
+            public historyRow AddhistoryRow(int chore_id, int user_id, System.DateTime chore_date, string notes, string completed) {
                 historyRow rowhistoryRow = ((historyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         chore_id,
                         user_id,
-                        date_completed,
-                        notes};
+                        chore_date,
+                        notes,
+                        completed};
                 rowhistoryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowhistoryRow);
                 return rowhistoryRow;
@@ -1247,8 +1258,9 @@ namespace Choreganizer {
                 this.columnid = base.Columns["id"];
                 this.columnchore_id = base.Columns["chore_id"];
                 this.columnuser_id = base.Columns["user_id"];
-                this.columndate_completed = base.Columns["date completed"];
+                this.columnchore_date = base.Columns["chore_date"];
                 this.columnnotes = base.Columns["notes"];
+                this.columncompleted = base.Columns["completed"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1260,10 +1272,12 @@ namespace Choreganizer {
                 base.Columns.Add(this.columnchore_id);
                 this.columnuser_id = new global::System.Data.DataColumn("user_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuser_id);
-                this.columndate_completed = new global::System.Data.DataColumn("date completed", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndate_completed);
+                this.columnchore_date = new global::System.Data.DataColumn("chore_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnchore_date);
                 this.columnnotes = new global::System.Data.DataColumn("notes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnotes);
+                this.columncompleted = new global::System.Data.DataColumn("completed", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncompleted);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -1273,6 +1287,7 @@ namespace Choreganizer {
                 this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;
                 this.columnnotes.MaxLength = 2147483647;
+                this.columncompleted.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2640,17 +2655,17 @@ namespace Choreganizer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime date_completed {
+            public System.DateTime chore_date {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tablehistory.date_completedColumn]));
+                        return ((global::System.DateTime)(this[this.tablehistory.chore_dateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'date completed\' in table \'history\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'chore_date\' in table \'history\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablehistory.date_completedColumn] = value;
+                    this[this.tablehistory.chore_dateColumn] = value;
                 }
             }
             
@@ -2667,6 +2682,22 @@ namespace Choreganizer {
                 }
                 set {
                     this[this.tablehistory.notesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string completed {
+                get {
+                    try {
+                        return ((string)(this[this.tablehistory.completedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'completed\' in table \'history\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablehistory.completedColumn] = value;
                 }
             }
             
@@ -2696,14 +2727,14 @@ namespace Choreganizer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isdate_completedNull() {
-                return this.IsNull(this.tablehistory.date_completedColumn);
+            public bool Ischore_dateNull() {
+                return this.IsNull(this.tablehistory.chore_dateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setdate_completedNull() {
-                this[this.tablehistory.date_completedColumn] = global::System.Convert.DBNull;
+            public void Setchore_dateNull() {
+                this[this.tablehistory.chore_dateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2716,6 +2747,18 @@ namespace Choreganizer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetnotesNull() {
                 this[this.tablehistory.notesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IscompletedNull() {
+                return this.IsNull(this.tablehistory.completedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetcompletedNull() {
+                this[this.tablehistory.completedColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4183,46 +4226,54 @@ SELECT id, name, [group], requires, notes, minutes, points FROM chores WHERE (id
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("chore_id", "chore_id");
             tableMapping.ColumnMappings.Add("user_id", "user_id");
-            tableMapping.ColumnMappings.Add("date completed", "date completed");
+            tableMapping.ColumnMappings.Add("chore_date", "chore_date");
             tableMapping.ColumnMappings.Add("notes", "notes");
+            tableMapping.ColumnMappings.Add("completed", "completed");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[history] WHERE (([id] = @Original_id) AND ((@IsNull_chore_id = 1 AND [chore_id] IS NULL) OR ([chore_id] = @Original_chore_id)) AND ((@IsNull_user_id = 1 AND [user_id] IS NULL) OR ([user_id] = @Original_user_id)) AND ((@IsNull_date_completed = 1 AND [date completed] IS NULL) OR ([date completed] = @Original_date_completed)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[history] WHERE (([id] = @Original_id) AND ((@IsNull_chore_id = 1 AND [chore_id] IS NULL) OR ([chore_id] = @Original_chore_id)) AND ((@IsNull_user_id = 1 AND [user_id] IS NULL) OR ([user_id] = @Original_user_id)) AND ((@IsNull_chore_date = 1 AND [chore_date] IS NULL) OR ([chore_date] = @Original_chore_date)) AND ((@IsNull_completed = 1 AND [completed] IS NULL) OR ([completed] = @Original_completed)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_chore_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_chore_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_date_completed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date completed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date_completed", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date completed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_chore_date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_chore_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_completed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "completed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_completed", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "completed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[history] ([chore_id], [user_id], [date completed], [notes]) VA" +
-                "LUES (@chore_id, @user_id, @date_completed, @notes);\r\nSELECT id, chore_id, user_" +
-                "id, [date completed], notes FROM history WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[history] ([chore_id], [user_id], [chore_date], [notes], [compl" +
+                "eted]) VALUES (@chore_id, @user_id, @chore_date, @notes, @completed);\r\nSELECT id" +
+                ", chore_id, user_id, chore_date, notes, completed FROM history WHERE (id = SCOPE" +
+                "_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@chore_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date_completed", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date completed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@chore_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@notes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@completed", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "completed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[history] SET [chore_id] = @chore_id, [user_id] = @user_id, [date completed] = @date_completed, [notes] = @notes WHERE (([id] = @Original_id) AND ((@IsNull_chore_id = 1 AND [chore_id] IS NULL) OR ([chore_id] = @Original_chore_id)) AND ((@IsNull_user_id = 1 AND [user_id] IS NULL) OR ([user_id] = @Original_user_id)) AND ((@IsNull_date_completed = 1 AND [date completed] IS NULL) OR ([date completed] = @Original_date_completed)));
-SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[history] SET [chore_id] = @chore_id, [user_id] = @user_id, [chore_date] = @chore_date, [notes] = @notes, [completed] = @completed WHERE (([id] = @Original_id) AND ((@IsNull_chore_id = 1 AND [chore_id] IS NULL) OR ([chore_id] = @Original_chore_id)) AND ((@IsNull_user_id = 1 AND [user_id] IS NULL) OR ([user_id] = @Original_user_id)) AND ((@IsNull_chore_date = 1 AND [chore_date] IS NULL) OR ([chore_date] = @Original_chore_date)) AND ((@IsNull_completed = 1 AND [completed] IS NULL) OR ([completed] = @Original_completed)));
+SELECT id, chore_id, user_id, chore_date, notes, completed FROM history WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@chore_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date_completed", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date completed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@chore_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@notes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@completed", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "completed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_chore_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_chore_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_user_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_date_completed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date completed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date_completed", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date completed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_chore_date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_chore_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "chore_date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_completed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "completed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_completed", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "completed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -4239,7 +4290,7 @@ SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, chore_id, user_id, [date completed], notes FROM dbo.history";
+            this._commandCollection[0].CommandText = "SELECT id, chore_id, user_id, chore_date, notes, completed FROM dbo.history";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4300,7 +4351,7 @@ SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, global::System.Nullable<int> Original_chore_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<global::System.DateTime> Original_date_completed) {
+        public virtual int Delete(int Original_id, global::System.Nullable<int> Original_chore_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<global::System.DateTime> Original_chore_date, string Original_completed) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
             if ((Original_chore_id.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -4318,13 +4369,21 @@ SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_date_completed.HasValue == true)) {
+            if ((Original_chore_date.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_date_completed.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_chore_date.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Original_completed == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_completed));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4346,7 +4405,7 @@ SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> chore_id, global::System.Nullable<int> user_id, global::System.Nullable<global::System.DateTime> date_completed, string notes) {
+        public virtual int Insert(global::System.Nullable<int> chore_id, global::System.Nullable<int> user_id, global::System.Nullable<global::System.DateTime> chore_date, string notes, string completed) {
             if ((chore_id.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(chore_id.Value));
             }
@@ -4359,8 +4418,8 @@ SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((date_completed.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(date_completed.Value));
+            if ((chore_date.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(chore_date.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -4370,6 +4429,12 @@ SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(notes));
+            }
+            if ((completed == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(completed));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4391,7 +4456,7 @@ SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> chore_id, global::System.Nullable<int> user_id, global::System.Nullable<global::System.DateTime> date_completed, string notes, int Original_id, global::System.Nullable<int> Original_chore_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<global::System.DateTime> Original_date_completed, int id) {
+        public virtual int Update(global::System.Nullable<int> chore_id, global::System.Nullable<int> user_id, global::System.Nullable<global::System.DateTime> chore_date, string notes, string completed, int Original_id, global::System.Nullable<int> Original_chore_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<global::System.DateTime> Original_chore_date, string Original_completed, int id) {
             if ((chore_id.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(chore_id.Value));
             }
@@ -4404,8 +4469,8 @@ SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((date_completed.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(date_completed.Value));
+            if ((chore_date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(chore_date.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -4416,32 +4481,46 @@ SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(notes));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_id));
-            if ((Original_chore_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_chore_id.Value));
+            if ((completed == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(completed));
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_id));
+            if ((Original_chore_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_chore_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             if ((Original_user_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_user_id.Value));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_user_id.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Original_date_completed.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_date_completed.Value));
+            if ((Original_chore_date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_chore_date.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(id));
+            if ((Original_completed == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_completed));
+            }
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4462,8 +4541,8 @@ SELECT id, chore_id, user_id, [date completed], notes FROM history WHERE (id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> chore_id, global::System.Nullable<int> user_id, global::System.Nullable<global::System.DateTime> date_completed, string notes, int Original_id, global::System.Nullable<int> Original_chore_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<global::System.DateTime> Original_date_completed) {
-            return this.Update(chore_id, user_id, date_completed, notes, Original_id, Original_chore_id, Original_user_id, Original_date_completed, Original_id);
+        public virtual int Update(global::System.Nullable<int> chore_id, global::System.Nullable<int> user_id, global::System.Nullable<global::System.DateTime> chore_date, string notes, string completed, int Original_id, global::System.Nullable<int> Original_chore_id, global::System.Nullable<int> Original_user_id, global::System.Nullable<global::System.DateTime> Original_chore_date, string Original_completed) {
+            return this.Update(chore_id, user_id, chore_date, notes, completed, Original_id, Original_chore_id, Original_user_id, Original_chore_date, Original_completed, Original_id);
         }
     }
     
